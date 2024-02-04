@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/../models/mConexion.php';
 
+/*
+    CLASE DEL MODELO QUE SE ENCARGARÁ DE LA GESTIÓN DE LAS SESIONES DE USUARIOS A NIVEL DE SQL
+*/
 class MUsuario
 {
     private $conexion;
@@ -12,6 +15,9 @@ class MUsuario
         $this->conexion = $conexionObj->getConexion();
     }
 
+    /*
+        FUNCIÓN QUE SE ENCARGA DE COMPROBAR SI LAS CREDENCIALES QUE NOS HAN LLEGADO COINCIDEN CON  LA BASE DE DATOS.
+    */
     public function login($username, $password)
     {
 

@@ -2,6 +2,9 @@
 
 require_once __DIR__ . '/../models/mUsuario.php';
 
+/*
+    clase del controlador que se encargará de la gestión de sesiones y los iniciones de éstas mismas
+*/
 class cAut
 {
     public $nombrePagina;
@@ -14,17 +17,26 @@ class cAut
         $this->objModelo = new MUsuario();
     }
 
+    /*
+        Función que se encarga de mostrar la vista del login
+     */
     public function mostrarLogin(){
         $this->nombrePagina = 'Menú de Administracion';
         $this->view = 'vLogin';
     }
 
+    /*
+        funcion que se encarga de mostrar la vista del menú
+    */
     public function mostrarMenu()
     {
         $this->nombrePagina = 'Menú de Administracion';
         $this->view = 'vMostrarMenuAdmin';
     }
 
+    /*
+        función que llama al modelo y se encarga de comprobar si las credenciales son correctas
+    */
     public function procesarLogin()
     {
         $this->nombrePagina = 'Error de Login';
@@ -49,6 +61,9 @@ class cAut
         }
     }
 
+    /*
+        Función que se encarga de comprobar si hay una sesión activa para evitar la navegación por urls
+    */
     public function checkSession()
     {
         session_start();
@@ -59,15 +74,18 @@ class cAut
         }
     }
 
+    /*
+        Función que se encarga de cerrar la sesión que tenemos activa
+    */
     public function cerrarSesion()
     {
         session_start();
 
 
-        $_SESSION = array();
-        // Destroy the session
+        $_SESSION = array(); //vacio el array 
+        // destruyo la sesion
         session_destroy();
-        // Redirect to the login page
+        // devuelvo al login
         header('Location: index.php?c=cAut&m=mostrarLogin');
         exit();
     }

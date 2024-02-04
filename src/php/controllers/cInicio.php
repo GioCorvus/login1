@@ -17,12 +17,13 @@
             $this->nombrePagina ='';
         }
 
-        /* */
+        /* función para mostrar el menu de login si no hay sesion*/
         public function mostrarMenuAdmin(){
             $this->nombrePagina = 'Login';
             $this->view = 'vLogin';
         }
 
+        /*funcion para mostrar el menu normal cuando haya sesion */
         public function mostrarMenu(){
             $this->nombrePagina = 'Menú de Administracion';
         $this->view = 'vMostrarMenuAdmin';
