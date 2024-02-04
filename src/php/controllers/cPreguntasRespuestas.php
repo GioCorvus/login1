@@ -41,6 +41,7 @@
         
         public function listarPreguntas(){
             $this->authController->checkSession();
+            
             $this->view = 'vListarPreguntas';
             $this->nombrePagina = 'Listar Preguntas';
             $datos =  $this->objModelo->mListarPreguntas();

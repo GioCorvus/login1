@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../models/mConexion.php';
 
+
+//Ésta es la clase del Modelo que he utilizado para simular la instalación, donde gestionan las consultas de la creación del admin.
 class MSuperadmin
 {
     private $conexion;
@@ -12,6 +14,10 @@ class MSuperadmin
         $this->conexion = $conexionObj->getConexion();
     }
 
+    
+    /*Ésta funcion se encarga de hashear la contraseña que nos llega desde el formulario y el controlador, para con consultas preparadas insertar 
+    la línea en la base de datos.
+    */
     public function crearSuperadmin($nombre_usuario, $password)
     {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -27,6 +33,10 @@ class MSuperadmin
     }
 
 
+    /*
+    Ésta función se encarga de comprobar si hay un superadmin. La utilizo para que si se intenta acceder al formulario de creación de admin y 
+    ya existe uno, no nos permita realizar otra alta.
+    */
     public function superadminExists()
     {
         $sql = "SELECT COUNT(*) as count FROM Usuario WHERE tipo_usuario = 1";

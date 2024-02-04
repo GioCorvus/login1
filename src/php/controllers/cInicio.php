@@ -1,5 +1,11 @@
 <?php
 
+/* 
+    Controlador para las páginas de inicio. Lo uso para centralizar las distintas vistas de inicio:
+        -Login
+        -Inicio de superadmin
+        -Posibles otros inicios de más tipos de usuario
+*/
     class CInicio {
 
         public $nombrePagina;
@@ -11,6 +17,7 @@
             $this->nombrePagina ='';
         }
 
+        /* */
         public function mostrarMenuAdmin(){
             $this->nombrePagina = 'Login';
             $this->view = 'vLogin';
